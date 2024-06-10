@@ -5,7 +5,7 @@ import torch.optim as optim
 import time
 from sklearn.metrics import accuracy_score, confusion_matrix, ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
-import tqdm
+
 
 
 class ModelTrainer:
@@ -142,3 +142,14 @@ class ModelTrainer:
         if show_plot == True:
             display.plot()
             plt.show()
+
+
+    def save(self, filepath):
+        torch.save(self.net.state_dict(), filepath)
+        print(f'Model saved to {filepath}')
+
+    
+    def load(self, filepath):
+        self.net.load_state_dict(torch.load(filepath))
+        self.net.to(self.device)
+        print(f'Model loaded from {filepath}')

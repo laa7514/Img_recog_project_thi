@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from PIL import Image
 
 class FullyConnectedNet(nn.Module):
 
@@ -76,3 +77,14 @@ class SmallConvNet(nn.Module):
         x = F.relu(self.fc2(x))
         x = self.logSoftmax(x)
         return x
+    
+def Classify_image(image_path, model, transform):
+    image = Image.open(image_path).convert('RGB')
+    image = transform(image).unsqueeze(0)  # Add batch dimension
+    model.eval()
+    
+    with torch.no_grad():
+        output = model(image)
+        _, predicted = torch.max(output, 1)
+        
+    return predicted.item()

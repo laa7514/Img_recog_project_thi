@@ -17,13 +17,17 @@ from model_trainer import ModelTrainer
 from datasets import ClassroomObjectsDataset
 
 
-#### Hyperparameters ####
+#### zu Bearbeiten ####
 batch_size = 3
-num_epochs = 5
+num_epochs = 20
 lr = 0.0005
+safe_model = True
+
+# Pfad zum Ordner mit den Bildern
+data_path = '/Users/anouknormann/Desktop/PracticalDeepLearning/Img_recog_project_thi/Objects_DataSet'
 ######################
 
-data_path = 'Path_to_dir_with_data'
+
 train_path = f'{data_path}/train_data'
 val_path = f'{data_path}//val_data'
 
@@ -64,3 +68,5 @@ print("")
 print("Training finished. Starting evaluation.")
 trainer.multiclass_test(test_dataloader)
 
+if safe_model:
+    trainer.save(model_path)
