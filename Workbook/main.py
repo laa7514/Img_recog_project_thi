@@ -23,9 +23,9 @@ num_epochs = 5
 lr = 0.0005
 ######################
 
-data_path = '/Users/anouknormann/Desktop/PracticalDeepLearning/ImageProject/Objects_DataSet'
-train_path = '/Users/anouknormann/Desktop/PracticalDeepLearning/ImageProject/Objects_DataSet/train_data'
-val_path = '/Users/anouknormann/Desktop/PracticalDeepLearning/ImageProject/Objects_DataSet/val_data'
+data_path = 'Path_to_dir_with_data'
+train_path = f'{data_path}/train_data'
+val_path = f'{data_path}//val_data'
 
 
 
